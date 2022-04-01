@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>subway</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+        $('#menu').mouseenter(function(){
+            $('.sub').stop().slideDown()
+            $('header').stop().animate({'height':'380px'})
+        })
+        $('#menu').mouseleave(function(){
+            $('.sub').stop().slideUp()
+            $('header').stop().animate({'height':'165px'})
+        })
+
+
+            $('#slide_btn>li').click(function(){
+                $(this).css({"background-color":"yellow","width":"25px"})
+                $(this).siblings().css({"background-color":"#fff","width":"10px"})
+                $('#slide_imgbox').animate({'left': $(this).index()*-100 +"%"   })
+            })
+
+        })
+    </script>
+    <link rel="shortcut icon" href="subway_favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        *{margin: 0;padding: 0;list-style: none; font-family: 'Noto Sans KR', sans-serif;}
+        header{width: 100%; height: 165px; border-top: 1px solid #009223; border-bottom: 1px solid #eee; text-align: center; position: absolute; z-index: 99999; background-color: #fff; top: 0;}
+        #header_menu2{width: 1170px;height: 40px; position: absolute; left: 0; right: 0; margin: auto; top: 30px; }
+        #header_menu2>ul{float: right;}
+        #header_menu2>ul>li{ padding: 16px; font-size: 12px; color: gray; display: inline-block;}
+        #header_menu2>ul>li>img{vertical-align: middle;}
+        #logo{ width: 1170px; margin: auto; margin-top: 37px; z-index: 999; position: relative;}
+        #menu{width: 1000px; margin: auto; margin-top: 19px;}
+        #menu>li{width: 166px; line-height: 60px; float: left;font-weight: 700; font-size: 18px; position: relative;}
+        #menu>li:hover{color: #3c0;}
+        .sub{position: absolute; width: 100%; line-height: 30px; font-size: 14px; color: #999; left: 0; top: 60px; padding: 20px 0; font-weight: 400;display: none;}
+        .sub>li:hover{color: #3c0; text-decoration: underline;cursor: pointer;}
+
+        #slide{width: 100%; height: 440px; position: relative; margin-top: 165px;}
+        #slide_imgbox_wrap{width: 100%;height: 440px;position: relative; overflow: hidden;}
+        #slide_imgbox{width: 500%; height: 440px; position: absolute;}
+        #slide_imgbox>li{width: 20%;height: 440px;float: left;}
+        #slide_imgbox>li:nth-child(1){background: url(slide1.jpg) center no-repeat;}
+        #slide_imgbox>li:nth-child(2){background: url(slide2.jpg) center no-repeat;}
+        #slide_imgbox>li:nth-child(3){background: url(slide3.jpg) center no-repeat;}
+        #slide_imgbox>li:nth-child(4){background: url(slide4.jpg) center no-repeat;}
+        #slide_imgbox>li:nth-child(5){background: url(slide5.jpg) center no-repeat;}
+        #slide_btbox{width: 1170px; height: 130px; position: absolute; left: 0; right: 0; margin: auto; bottom: -20px;}
+        #slide_bt_box_right{width: 600px;height: 110px; float: right; margin-top: 10px;}
+        #slide_btn{float: right;}
+        #slide_btn>li{width: 10px;height: 10px;border-radius: 10px;margin: 4px; float: left; background-color: #fff; transition: 0.5s;}
+        #slide_btn>li:nth-child(1){width: 25px; background-color: yellow;}
+        #slide_btbox_info{clear: both; margin-top: 50px; float: right;}
+        #slide_btbox_info>li{width: 300px;height: 80px; float: left; text-align: center; line-height: 80px;}
+        #slide_btbox_info>li:nth-child(1) {background-color: #ffce32;border-radius: 30px 0 0 0;}
+        #slide_btbox_info>li:nth-child(2) {background-color: #009223; border-radius: 0 0 30px 0;}
+        #slide_btbox_info>li>img{ vertical-align: middle;}
+
+        #subway_menu{width: 1170px; height: 420px; margin: auto; margin-top: 100px; position: relative;}
+        #subway_list_wrap{width: 1170px;height: 280px; position: relative; overflow: hidden; margin: auto; margin-top: 100px;}
+        #subway_menu_left_btn{width: 50px;height: 50px; position: absolute; left: -100px; top: 220px; background: url(icon_event_slider_arr.png) 0 0 no-repeat; z-index: 9999;}
+        #subway_menu_left_btn:hover{background: url(icon_event_slider_arr.png) 0 -50px no-repeat; cursor: pointer;}
+        #subway_menu_right_btn{width: 50px;height: 50px; position: absolute; right: -100px; top: 220px; background: url(icon_event_slider_arr.png)-50px 0 no-repeat;}
+        #subway_menu_right_btn:hover{background: url(icon_event_slider_arr.png)-50px -50px no-repeat; cursor: pointer;}
+        
+        #subway_menu_title{width: 340px; height: 60px;float: left;}
+        #subway_menu_nb{width: 450px;height: 15px; float: right; margin-top: 20px;}
+        #subway_menu_nb>li{font-size: 15px; float: left;padding: 0 20px; height: 15px; line-height: 15px; border-right: 1px solid #000;}
+        #subway_menu_nb>li:last-child{padding-right: 0; border-right: none;}
+        #subway_menu_list{width: 1755px; height: 280px;  position: absolute; left: 0; bottom: 50px; text-align: center;}
+        #subway_menu_list>li{width: 292px;height: 280px; float: left;}
+        #subway_menu_list>li>img{width: 100%;}
+        #subway_menu_list>li>h4{font-size: 20px; margin-top: 10px;}
+        #subway_menu_list>li>p{font-size: 15px; color: #999; margin-top: 10px;}
+        #subway_menu_title_icon{width: 60px; height: 60px; background-color: #ffce32; border-radius: 30px 30px 0 30px; float: left;}
+        #subway_menu_title>h2{color: #292929; font-size: 30px; font-weight: 900; line-height: 60px; float: left; margin-left: -30px;}
+
+        #board{width: 100%;;height: 790px; margin: auto; background: url(bg_content.gif) 0 0 repeat; margin-top: 150px; overflow: hidden;}
+        #board_box{width: 1170px; height: 630px; margin: auto; margin-top: 80px; position: relative;}
+        #board_box>li:nth-child(1){width: 400px; height: 300px; background:url(bg_utilization.png); position: absolute; left: 0; top: 0; padding: 40px; box-sizing: border-box;}
+        #board_box>li:nth-child(2){width: 825px; height: 300px; background:url(img_subway_history.png); position: absolute; left: 400px; top: 0; padding: 40px; padding-left: 400px; box-sizing: border-box;}
+        #board_box>li:nth-child(3){width: 875px; height: 300px; background-color: #fff; position: absolute; left: 0; bottom: 0; border-radius: 30px 0 30px 0; padding: 50px; box-sizing: border-box;}
+        #board_box_new{width: 200px; height: 200px; float: left;  text-align: center;}
+        #board_box_notice{width: 500px;height: 200px;float: right;}
+        #board_box_new_title{width: 100%; height: 50px; }
+        #board_box_new_title_bg{width: 50px;height: 50px; border-radius: 50px 50px 0 50px; float: left; background-color: #ffce32;}
+        #board_box_new_title>h4{line-height: 50px; float: left; font-size: 25px; margin-left: -25px;}
+        #board_box_new_notice>p{color: #999; margin-top: 20px;}
+        #board_box_notice>ul>li{font-size: 16px; margin-top: 15px;}
+        #board_box_notice>h6{margin-top: 20px; color: #999;}
+        #board_box>li:nth-child(4){width: 270px; height: 300px; background:url(banner_20220103010117019.jpg); position: absolute; right: 0; bottom: 0; border-radius: 0 30px 0 30px;}
+        #board_box>li>h4{font-size: 25px; color: #fff;}
+        #board_box>li>button{padding: 15px; border: 1px solid #fff; color: #fff; background-color: transparent; margin-top: 100px; border-radius: 100px;}
+        #footer_icon{width: 1170px;height: 150px; margin: auto; text-align: center;}
+        #footer_icon>li{overflow: hidden; display: inline-block;  margin: 40px;}
+        #footer_icon>li:nth-child(1)>.footer_iconbox{background: url(icon_quickmenu.png) 0 0;}
+        #footer_icon>li:nth-child(2)>.footer_iconbox{background: url(icon_quickmenu.png) -70px 0;}
+        #footer_icon>li:nth-child(3)>.footer_iconbox{background: url(icon_quickmenu.png) -140px 0;}
+        #footer_icon>li:nth-child(4)>.footer_iconbox{background: url(icon_quickmenu.png) -210px 0;}
+        .footer_iconbox{width: 70px; height: 70px; float: left;}
+        .footer_icontext{height: 70px; float: right;text-align: left;}
+        .footer_icontext>h4{font-size: 16px;}
+        .footer_icontext>h5{font-size: 12px; color: #aaa; font-weight: 100;}
+        footer{width: 100%;height: 150px;background-color: #292929;}
+        #footer1{width: 100%; height: 60px; border-bottom: 1px solid #3b3b3b;}
+        #footer1_box{width: 1170px;height: 58px; margin: auto;}
+        #footer1_box>ul>li{float: left; margin-right: 15px; line-height: 60px; color: #777; font-size: 14px;}
+        #footer1_box>ul>li:nth-child(2){color: #bbb;font-weight: 900;}
+        #footer2{width: 100%;height: 90px;}
+        #footer2_box{width: 1170px;height: 88px; margin: auto;}
+        #footer2_left{width: 800px; height: 60px; float: left; margin-top: 13px; color: #777;}
+        #footer2_left>ul>li{display: inline-block; font-size: 12px;}
+        #footer2_left>ul>li:after{content:'|'; margin: 0 6px;}
+        #footer2_left>ul>li:last-child::after{content:'';}
+        #footer2_right{width: 120px; height: 60px; float: right; margin-top: 13px;}
+        #footer2_right>ul>li{width: 50px; height: 50px; float: left; margin: 5px;}
+        #footer2_right>ul>li:nth-child(1){background: url(icon_sns_instar.png)0 0;}
+        #footer2_right>ul>li:nth-child(2){background: url(icon_sns_facebook.png)0 0;}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header_menu2">
+            <ul>
+                <li>로그인</li>
+                <li>회원가입</li>
+                <li><img src="icon_utill_global.png" alt=""></li>
+            </ul>
+        </div>
+        <h1 id="logo"><img src="logo_w.png" alt=""></h1>
+        <ul id="menu">
+            <li>메뉴소개
+                <ul class="sub">
+                    <li>샌드위치</li>
+                    <li>랩ㆍ기타</li>
+                    <li>샐러드</li>
+                    <li>아침메뉴</li>
+                    <li>스마일 썹</li>
+                    <li>단체메뉴</li>
+                </ul>
+            </li>
+            <li>이용방법
+                <ul class="sub">
+                    <li>써브웨이 이용방법</li>
+                    <li>단체메뉴 이용방법</li>
+                    <li>신선한 재료 소개</li>
+                    <li>App 이용방법</li>
+                </ul>
+            </li>
+            <li>새소식
+                <ul class="sub">
+                    <li>이벤트ㆍ프로모션</li>
+                    <li>뉴스ㆍ공지사항</li>
+                    <li>광고영상</li>
+                </ul>
+            </li>
+            <li>써브웨이
+                <ul class="sub">
+                    <li>써브웨이 역사</li>
+                    <li>써브웨이 약속</li>
+                    <li>샌드위치 아티스트 지원</li>
+                    <li>매장찾기</li>
+                </ul>
+            </li>
+            <li>가맹점
+                <ul class="sub">
+                    <li>써브웨이 프랜차이즈</li>
+                    <li>가맹관련 FAQ</li>
+                    <li>가맹신청ㆍ문의</li>
+                    <li>지사안내</li>
+                    <li>사업설명회</li>
+                </ul>
+            </li>
+            <li>온라인주문
+                <ul class="sub">
+                    <li>FAST-SUB</li>
+                    <li>HOME-SUB</li>
+                    <li>단체주문</li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <div id="slide">
+        <div id="slide_imgbox_wrap">
+            <ul id="slide_imgbox">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="slide_btbox">
+            <div id="slide_bt_box_right">
+                <ul id="slide_btn">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul id="slide_btbox_info">
+                    <li><img src="icon1.png" alt="">매장찾기</li>
+                    <li><img src="icon.png" alt="">가맹신청ㆍ문의</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="subway_menu">
+        <div id="subway_menu_left_btn"></div>
+        <div id="subway_menu_right_btn"></div>
+        <div id="subway_menu_title">
+            <div id="subway_menu_title_icon"></div>
+            <h2>Subway's Menu</h2>
+        </div>
+        <ul id="subway_menu_nb">
+            <li>클래식</li>
+            <li>프레쉬&라이트</li>
+            <li>프리미엄</li>
+            <li>아침메뉴</li>
+        </ul>
+        <div id="subway_list_wrap">
+            <ul id="subway_menu_list">
+                <li>
+                    <img src="sandwich_cl06_01.jpg" alt="">
+                    <h4>에그마요</h4>
+                    <p>부드러운 달걀과 고소한 마요네즈가 만나
+                        더 부드러운 스테디셀러</p>
+                </li>
+                <li>
+                    <img src="sandwich_cl01_01.jpg" alt="">
+                    <h4>이탈리안 비엠티</h4>
+                    <p>페퍼로니, 살라미 그리고 햄이 만들어내는 최상의 조화! 전세계가 사랑하는 써브웨이의 베스트셀러! Biggest Meatiest Tastiest, its’ B.M.T!</p>
+                </li>
+                <li>
+                    <img src="sandwich_cl02_01.jpg" alt="">
+                    <h4>비엘티</h4>
+                    <p>오리지널 아메리칸 스타일 베이컨의
+                        풍미와 바삭함 그대로</p>
+                </li>
+                <li>
+                    <img src="sandwich_cl03_01.jpg" alt="">
+                    <h4>미트볼</h4>
+                    <p>이탈리안 스타일 비프 미트볼에
+                        써브웨이만의 풍부한 토마토 향이 살아있는
+                        마리나라소스를 듬뿍</p>
+                </li>
+                <li>
+                    <img src="sandwich_cl04_01.jpg" alt="">
+                    <h4>햄</h4>
+                    <p>기본 중에 기본! 풍부한 햄이 만들어내는 입 안 가득 넘치는 맛의 향연</p>
+                </li>
+                <li>
+                    <img src="sandwich_cl05_01.jpg" alt="">
+                    <h4>참치</h4>
+                    <p>남녀노소 누구나 종하하는 담백한 참치와 고소한 마요네즈의 완벽한 조화</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="board">
+        <ul id="board_box">
+            <li>
+                <h4>써브웨이를<br>제대로 즐기는 방법!</h4>
+                <button>이용방법</button>
+            </li>
+            <li>
+                <h4>50년 역사를 가진<br>No.1 프랜차이즈의 성장기</h4>
+                <button>써브웨이 역사</button>
+            </li>
+            <li>
+                <div id="board_box_new">
+                    <div id="board_box_new_title">
+                        <div id="board_box_new_title_bg"></div>
+                        <h4>What's New</h4>
+                    </div>
+                    <p>써브웨이의 다양한 소식을 <br>빠르게 전달해드립니다.</p>
+                </div>
+                <div id="board_box_notice">
+                    <ul>
+                        <li>써브웨이와 함께하는 "소녀의세계2"</li>
+                        <li>써브웨이 일부 제품 가격 인상안내</li>
+                        <li>22oz 음료 판매 종료 안내</li>
+                    </ul>
+                    <h6>more</h6>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+    </div>
+<!--  -->
+    <ul id="footer_icon">
+        <li>
+            <div class="footer_iconbox"></div>
+            <div class="footer_icontext">
+                <h4>프랜차이즈</h4>
+                <h5>개설절차/투자비용정보</h5>
+            </div>
+        </li>
+        <li>
+            <div class="footer_iconbox"></div>
+            <div class="footer_icontext">
+                <h4>지사안내</h4>
+                <h5>수도권/지방 지사정보</h5>
+            </div>
+        </li>
+        <li>
+            <div class="footer_iconbox"></div>
+            <div class="footer_icontext">
+                <h4>광고영상</h4>
+                <h5>TV광고/동영상</h5>
+            </div>
+        </li>
+        <li>
+            <div class="footer_iconbox"></div>
+            <div class="footer_icontext">
+                <h4>고객문의</h4>
+                <h5>자주하는 질문/1:1문의</h5>
+            </div>
+        </li>
+    </ul>
+    <!--  -->
+    <footer>
+        <div id="footer1">
+            <div id="footer1_box">
+                <ul>
+                    <li>이용약관</li>
+                    <li>개인정보처리방침</li>
+                    <li>써브카드</li>
+                    <li>점주관리자</li>
+                    <li>Subway Listens</li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer2">
+            <div id="footer2_box">
+                <div id="footer2_left">
+                    <ul>
+                        <li>서울시 서초구 강남대로 535 프린스빌딩 15층</li>
+                        <li>대표 : 콜린클락</li>
+                        <li>전화 : 02-797-5036</li>
+                        <li>사업자등록번호 : 101-84-04143</li>
+                    </ul>
+                    <p>SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</p>
+                </div>
+                <div id="footer2_right">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
